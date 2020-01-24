@@ -19,7 +19,7 @@ abstract class BrowserTestCase extends \Orchestra\Testbench\Dusk\TestCase
             \Laravie\Stream\Laravel\StreamServiceProvider::class,
             \Minions\MinionsServiceProvider::class,
             \Minions\Http\MinionsServiceProvider::class,
-            \Minions\Polyfill\PolyfillServiceProvider::class,
+            \Minions\Polyfill\MinionsServiceProvider::class,
         ];
     }
 

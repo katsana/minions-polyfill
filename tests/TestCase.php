@@ -18,8 +18,8 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
         return [
             \Laravie\Stream\Laravel\StreamServiceProvider::class,
             \Minions\MinionsServiceProvider::class,
-            \Minions\Server\MinionsServiceProvider::class,
-            \Minions\Polyfill\PolyfillServiceProvider::class,
+            \Minions\Http\MinionsServiceProvider::class,
+            \Minions\Polyfill\MinionsServiceProvider::class,
         ];
     }
 
