@@ -1,0 +1,28 @@
+preset: package
+
+namespace: Minions\Polyfill
+
+paths:
+  src: src
+  resource: resources
+
+factory:
+  path: database/factories
+
+migration:
+  path: database/migrations
+  prefix: ''
+
+console:
+  namespace: Minions\Polyfill\Console
+
+model:
+  namespace: Minions\Polyfill
+
+provider:
+  namespace: Minions\Polyfill
+
+testing:
+  namespace: Minions\Polyfill\Tests
+  extends:
+    feature: Minions\Polyfill\Tests\TestCase
