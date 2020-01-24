@@ -24,7 +24,7 @@ class PolyfillServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->bootRpcRoutes();
+        //
     }
 
     /**
@@ -34,22 +34,18 @@ class PolyfillServiceProvider extends ServiceProvider
      */
     protected function registerRouterMacro()
     {
-        Router::macro('minion', function ($uri) {
-            $this->match(['GET'], $uri, '\Minions\Polyfill\Http\Controllers\UpController');
+        Router::macro('minion', function ($prefix, $domain = null) {
+            $router = $this->namespace('\Minions\Polyfill\Http\Controllers')
+                ->prefix($prefix);
 
-            return $this->match(['POST'], $uri, '\Minions\Polyfill\Http\Controllers\RpcController');
+            if (! \is_null($domain)) {
+                $router->domain($domain);
+            }
+
+            return $router->group(static function ($router) {
+                $router->get('/', 'UpController');
+                $router->post('/', 'RpcController');
+            });
         });
-    }
-
-    /**
-     * Register rpc routes.
-     */
-    protected function bootRpcRoutes(): void
-    {
-        $routeFile = $this->app->basePath('routes/rpc.php');
-
-        if (\file_exists($routeFile)) {
-            require $routeFile;
-        }
     }
 }
