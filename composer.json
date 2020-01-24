@@ -39,10 +39,7 @@
         "laravel": {
             "providers": [
                 "Minions\\Polyfill\\PolyfillServiceProvider"
-            ],
-            "aliases": {
-                "Minion": "Minions\\Minion"
-            }
+            ]
         }
     },
     "minimum-stability": "dev"
