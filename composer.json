@@ -1,12 +1,17 @@
 {
     "name": "katsana/minions-polyfill",
-    "description": "Laravel Routing Polyfill for Minions",
+    "description": "Minions Component Server (Polyfill) using Laravel Routing",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
+            "name": "KATSANA Developer",
+            "email": "developer@katsana.com"
+        },
+        {
             "name": "Mior Muhammad Zaki",
-            "email": "crynobone@gmail.com"
+            "email": "crynobone@katsana.com",
+            "role": "Developer"
         }
     ],
     "autoload": {
@@ -25,7 +30,7 @@
         "symfony/psr-http-message-bridge": "^1.2"
     },
     "require-dev": {
-        "clue/buzz-react": "^2.5",
+        "clue/buzz-react": "^2.6",
         "clue/block-react": "^1.3",
         "katsana/minions": "^1.2",
         "orchestra/canvas": "^4.5",
