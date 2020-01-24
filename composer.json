@@ -29,15 +29,18 @@
         "clue/block-react": "^1.3",
         "katsana/minions": "^1.2",
         "orchestra/canvas": "^4.5",
-        "orchestra/testbench-dusk": "^4.5"
+        "orchestra/testbench-dusk": "^4.5.1"
     },
     "config": {
         "sort-packages": true
     },
     "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
         "laravel": {
             "providers": [
-                "Minions\\Polyfill\\PolyfillServiceProvider"
+                "Minions\\Polyfill\\MinionsServiceProvider"
             ]
         }
     },

@@ -5,7 +5,7 @@ namespace Minions\Polyfill;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
-class PolyfillServiceProvider extends ServiceProvider
+class MinionsServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
