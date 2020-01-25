@@ -18,6 +18,7 @@ class RpcRequestTest extends BrowserTestCase
             Router::rpc('math.add', 'Minions\Polyfill\Tests\Stubs\MathAdd');
         });
     }
+
     /**
      * Define environment setup.
      *
