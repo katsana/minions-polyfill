@@ -2,7 +2,6 @@
 
 namespace Minions\Polyfill\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Psr\Http\Message\ServerRequestInterface;
 
 class UpController
