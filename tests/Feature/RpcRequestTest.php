@@ -13,7 +13,7 @@ class RpcRequestTest extends TestCase
         parent::setUp();
 
         $this->afterApplicationCreated(static function () {
-            Router::rpc('math.add', 'Minions\Polyfill\Tests\Stubs\MathAdd');
+            Router::rpc('math.add', 'Minions\Polyfill\Tests\JsonRpc\MathAdd');
         });
     }
 

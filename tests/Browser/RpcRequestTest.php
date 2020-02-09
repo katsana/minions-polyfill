@@ -15,7 +15,7 @@ class RpcRequestTest extends BrowserTestCase
         parent::setUp();
 
         $this->tweakApplication(static function () {
-            Router::rpc('math.add', 'Minions\Polyfill\Tests\Stubs\MathAdd');
+            Router::rpc('math.add', 'Minions\Polyfill\Tests\JsonRpc\MathAdd');
         });
     }
 

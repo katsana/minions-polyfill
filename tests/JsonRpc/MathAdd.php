@@ -1,6 +1,6 @@
 <?php
 
-namespace Minions\Polyfill\Tests\Stubs;
+namespace Minions\Polyfill\Tests\JsonRpc;
 
 class MathAdd
 {
