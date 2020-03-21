@@ -14,8 +14,9 @@ jobs:
       matrix:
         php: [7.4, 7.3, 7.2]
         laravel: [6.x, 7.x]
+        minions: [1.x, 2.x]
 
-    name: PHP${{ matrix.php }} with Laravel ${{ matrix.laravel }} on ubuntu-latest
+    name: PHP${{ matrix.php }} with Laravel ${{ matrix.laravel }} and Minion ${{ matrix.minions }} on ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -25,7 +26,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.composer/cache/files
-          key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+          key: dependencies-laravel-${{ matrix.laravel }}-minions-${{ matrix.minions }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -36,7 +37,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "katsana/minions:${{ matrix.minions }}" --no-interaction --no-update
           composer update --prefer-dist --no-interaction --no-suggest
       - name: Create database
         run: php ./vendor/orchestra/testbench-core/create-sqlite-db
