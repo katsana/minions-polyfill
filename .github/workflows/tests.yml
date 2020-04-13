@@ -45,5 +45,9 @@ jobs:
         run: vendor/bin/dusk-updater detect --auto-update
       - name: Start Chrome Driver
         run: vendor/laravel/dusk/bin/chromedriver-linux &
+      - name: Sleep for 5 seconds
+        uses: jakejarvis/wait-action
+        with:
+          time: '5s'
       - name: Execute tests
         run: vendor/bin/phpunit
