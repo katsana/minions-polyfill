@@ -46,7 +46,7 @@ jobs:
       - name: Start Chrome Driver
         run: vendor/laravel/dusk/bin/chromedriver-linux &
       - name: Sleep for 5 seconds
-        uses: jakejarvis/wait-action
+        uses: jakejarvis/wait-action@master
         with:
           time: '5s'
       - name: Execute tests
