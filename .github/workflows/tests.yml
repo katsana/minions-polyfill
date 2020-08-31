@@ -12,9 +12,111 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [7.4, 7.3, 7.2]
+        php: [7.4, 7.3]
+        laravel: [6.x, 7.x, 8.x]
+        minions: [2.x]
+
+    name: PHP${{ matrix.php }} with Laravel ${{ matrix.laravel }} and Minion ${{ matrix.minions }} on ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.composer/cache/files
+          key: dependencies-laravel-${{ matrix.laravel }}-minions-${{ matrix.minions }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, sqlite3, pdo_sqlite, pdo_mysql, bcmath, intl, gd, exif, iconv, imagick
+          coverage: none
+
+      - name: Install dependencies
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "katsana/minions:${{ matrix.minions }}" --no-interaction --no-update
+          composer update --prefer-dist --no-interaction --no-suggest
+      - name: Create database
+        run: php ./vendor/orchestra/testbench-core/create-sqlite-db
+      - name: Upgrade Chrome Driver
+        run: vendor/bin/dusk-updater detect --auto-update
+      - name: Start Chrome Driver
+        run: vendor/laravel/dusk/bin/chromedriver-linux &
+      - name: Sleep for 5 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '5s'
+      - name: Execute tests
+        run: vendor/bin/phpunit
+      - name: Upload Failed Screenshots
+        uses: actions/upload-artifact@v2-preview
+        if: failure()
+        with:
+          name: screenshots
+          path: tests/Browser/screenshots/*
+
+  tests-on-legacy-php:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [7.2]
         laravel: [6.x, 7.x]
         minions: [1.x, 2.x]
+
+    name: PHP${{ matrix.php }} with Laravel ${{ matrix.laravel }} and Minion ${{ matrix.minions }} on ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.composer/cache/files
+          key: dependencies-laravel-${{ matrix.laravel }}-minions-${{ matrix.minions }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, sqlite3, pdo_sqlite, pdo_mysql, bcmath, intl, gd, exif, iconv, imagick
+          coverage: none
+
+      - name: Install dependencies
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "katsana/minions:${{ matrix.minions }}" --no-interaction --no-update
+          composer update --prefer-dist --no-interaction --no-suggest
+      - name: Create database
+        run: php ./vendor/orchestra/testbench-core/create-sqlite-db
+      - name: Upgrade Chrome Driver
+        run: vendor/bin/dusk-updater detect --auto-update
+      - name: Start Chrome Driver
+        run: vendor/laravel/dusk/bin/chromedriver-linux &
+      - name: Sleep for 5 seconds
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '5s'
+      - name: Execute tests
+        run: vendor/bin/phpunit
+      - name: Upload Failed Screenshots
+        uses: actions/upload-artifact@v2-preview
+        if: failure()
+        with:
+          name: screenshots
+          path: tests/Browser/screenshots/*
+
+  tests-on-legacy-minions:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: [7.4, 7.3]
+        laravel: [6.x, 7.x]
+        minions: [1.x]
 
     name: PHP${{ matrix.php }} with Laravel ${{ matrix.laravel }} and Minion ${{ matrix.minions }} on ubuntu-latest
 

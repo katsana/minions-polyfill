@@ -25,13 +25,13 @@
         }
     },
     "require": {
-        "illuminate/http": "^6.0 || ^7.0",
+        "illuminate/http": "^6.0 || ^7.0 || ^8.0",
         "katsana/minions": "^1.7 || ^2.3"
     },
     "require-dev": {
         "clue/block-react": "^1.3",
-        "orchestra/canvas": "^4.5 || ^5.0",
-        "orchestra/testbench-dusk": "^4.6 || ^5.0"
+        "orchestra/canvas": "^4.5 || ^5.0 || ^6.0",
+        "orchestra/testbench-dusk": "^4.6 || ^5.0 || ^6.0"
     },
     "config": {
         "sort-packages": true
