@@ -14,9 +14,6 @@
     <include>
       <directory suffix=".php">src/</directory>
     </include>
-    <exclude>
-      <directory suffix=".php">src/Server/Console</directory>
-    </exclude>
   </coverage>
   <testsuites>
     <testsuite name="Browser">
