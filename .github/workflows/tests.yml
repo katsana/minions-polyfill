@@ -16,8 +16,6 @@ jobs:
           - "7.3"
           - "7.4"
         dependencies:
-          - "locked"
-          - "lowest"
           - "highest"
         laravel:
           - "6.x"
@@ -79,8 +77,6 @@ jobs:
         php:
           - "7.2"
         dependencies:
-          - "locked"
-          - "lowest"
           - "highest"
         laravel:
           - "6.x"
@@ -143,8 +139,6 @@ jobs:
           - "7.3"
           - "7.4"
         dependencies:
-          - "locked"
-          - "lowest"
           - "highest"
         laravel:
           - "6.x"
