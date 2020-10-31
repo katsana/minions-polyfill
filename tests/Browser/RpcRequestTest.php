@@ -40,7 +40,7 @@ class RpcRequestTest extends BrowserTestCase
                     'signature' => 'secret-signature',
                 ],
                 'server-project-id' => [
-                    'endpoint' => 'http://127.0.0.1:8000/rpc',
+                    'endpoint' => 'http://127.0.0.1:8001/rpc',
                     'token' => 'secret-token',
                     'signature' => 'secret-signature',
                 ],
