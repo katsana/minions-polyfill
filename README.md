@@ -1,7 +1,7 @@
 Minions Component Server (Polyfill) using Laravel Routing
 ===================
 
-[![Build Status](https://travis-ci.org/katsana/minions-polyfill.svg?branch=master)](https://travis-ci.org/katsana/minions-polyfill)
+[![tests](https://github.com/katsana/minions-polyfill/workflows/tests/badge.svg?branch=master)](https://github.com/katsana/minions-polyfill/actions?query=branch%3Amaster+workflow%3Atests)
 [![Latest Stable Version](https://poser.pugx.org/katsana/minions-polyfill/v/stable)](https://packagist.org/packages/katsana/minions-polyfill)
 [![Total Downloads](https://poser.pugx.org/katsana/minions-polyfill/downloads)](https://packagist.org/packages/katsana/minions-polyfill)
 [![Latest Unstable Version](https://poser.pugx.org/katsana/minions-polyfill/v/unstable)](https://packagist.org/packages/katsana/minions-polyfill)
