@@ -180,6 +180,8 @@ jobs:
           composer require "laravel/framework:${{ matrix.laravel }}" "katsana/minions:${{ matrix.minions }}" --no-interaction --no-update
       - name: Install dependencies
         uses: "ramsey/composer-install@v1"
+        with:
+          composer-options: "--prefer-dist --no-cache"
       - name: Create database
         run: php ./vendor/orchestra/testbench-core/create-sqlite-db
       - name: Upgrade Chrome Driver
