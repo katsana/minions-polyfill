@@ -14,7 +14,7 @@ class RpcRequestTest extends BrowserTestCase
     {
         parent::setUp();
 
-        $this->tweakApplication(static function () {
+        $this->tweakApplication(function () {
             Router::rpc('math.add', 'Minions\Polyfill\Tests\JsonRpc\MathAdd');
         });
     }
@@ -40,7 +40,7 @@ class RpcRequestTest extends BrowserTestCase
                     'signature' => 'secret-signature',
                 ],
                 'server-project-id' => [
-                    'endpoint' => static::baseServeUrl().'/rpc',
+                    'endpoint' => static::applicationBaseUrl().'/rpc',
                     'token' => 'secret-token',
                     'signature' => 'secret-signature',
                 ],
@@ -52,7 +52,9 @@ class RpcRequestTest extends BrowserTestCase
     public function it_can_make_rpc_request_from_a_client()
     {
         $promise = Minion::broadcast('server-project-id', new Message(
-            'math.add', [1, 2, 3, 4], \time()
+            'math.add',
+            [1, 2, 3, 4],
+            \time()
         ))->then(function (ResponseInterface $response) {
             $this->assertSame(10, $response->getRpcResult());
         });
